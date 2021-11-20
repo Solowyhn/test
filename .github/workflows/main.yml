@@ -11,19 +11,23 @@ on:
     branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: install jsdoc
-        run: npm install -g jsdoc
-      - name: JSDoc Action
-        run: jsdoc -d ./out ./source/Router.js
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Node.js dependencies
+        run: npm ci
+      
+      - name: Build
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./source
+          recurse: true
+          output_dir: ./out
 
