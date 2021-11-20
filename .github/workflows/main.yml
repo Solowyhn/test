@@ -32,9 +32,5 @@ jobs:
         run: npm ci
       
       - name: Build
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./source
-          recurse: true
-          output_dir: ./out
+        run: ./node_modules/.bin/jsdoc ./source/Router.js
 
