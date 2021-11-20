@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: install jsdoc
+        run: npm install -g jsdoc
       - name: JSDoc Action
-        run: ./node_modules/.bin/jsdoc -d ./out ./source/Router.js
+        run: jsdoc -d ./out ./source/Router.js
 
