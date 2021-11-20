@@ -1,1 +1,3 @@
-"doc": "jsdoc -d docs --configure jsconf.json Router.js"
+{
+  "doc": "jsdoc -d docs --configure jsconf.json Router.js"
+}
