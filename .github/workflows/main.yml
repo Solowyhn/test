@@ -47,11 +47,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           deploy_key: ${{ secrets.DEPLOY_KEY }}
-          publish_branch: main
+          publish_branch: gh-pages
           destination_dir: ./docs
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Update documentation'
+        
           
 
     
