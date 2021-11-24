@@ -3,15 +3,16 @@ on:
     push: 
       branches:
         - main
+jobs:
+    codacy-scan: #Run codacy code quality scan
+        name: Codacy Analysis CLI Scan
+        runs-on: ubuntu-latest
+        steps: 
+        - name: Checkout code
+          uses: actions/checkout@main
 
-codacy-scan: #Run codacy code quality scan
-    name: Codacy Analysis CLI Scan
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@main
+        - name: Run Codacy Analysis CLI
+          uses: codacy/codacy-analysis-cli-action@master
+          with: 
+            directory: ./source
 
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master
-        with: 
-          directory: ./source
