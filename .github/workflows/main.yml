@@ -27,12 +27,31 @@ jobs:
           config_file: conf.json
           template: minami
           front_page: README.md
-
+          
+      - name: push to docs
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: './out'
+          destination-github-username: cse110-fa21-group29
+          destination-repository-name: cse110-fa21-group29
+          user-email: btsuyuki1@gmail.com
+          user-name: default_author
+          commit-message: 'Update generated documentation'
+          target-branch: 'main'
+          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_branch: main
+          destination_dir: ./docs
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Update documentation'
           
 
     
