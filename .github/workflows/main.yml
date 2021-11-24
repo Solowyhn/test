@@ -45,10 +45,10 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./results
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           publish_branch: gh-pages
-          destination_dir: ./docs
+          destination_dir: ./codeql
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Update documentation'
