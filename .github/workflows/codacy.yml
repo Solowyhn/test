@@ -13,4 +13,6 @@ jobs:
 
         - name: Run Codacy Analysis CLI
           uses: codacy/codacy-analysis-cli-action@master
+          with: 
+            directory: /home/runner/work/Solowyhn/test/source/
 
